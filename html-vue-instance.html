@@ -7,6 +7,7 @@
     <title>Page Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
 
 </head>
@@ -50,6 +51,7 @@
 
         // $watch is an instance method
         vm.$watch('a', function (newValue, oldValue) {
+            console.log('has change a object');
             console.log(newValue, oldValue);
             // This callback will be called when `vm.a` changes
         });
