@@ -1,62 +1,71 @@
 <!DOCTYPE html>
 <html>
-
-<head>
+  <head>
     <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Page Title</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+  </head>
 
-</head>
-
-<body>
+  <body>
     <div id="app">
-        <!-- <p>{{ foo }}</p> -->
-        <!-- this will no longer update `foo`! -->
-        <!-- <button v-on:click="changeF">Change it</button> -->
+      <button @click="">{{ message }}</button>
+      <!-- <p>{{ foo }}</p> -->
+      <!-- this will no longer update `foo`! -->
+      <!-- <button v-on:click="changeF">Change it</button> -->
     </div>
     <script>
-        // //console.log('xx');
-        // var obj = {
-        //     foo: 'bar',
-        //     number: 2
-        // }
-        // //console.log(obj);
-        // Object.freeze(obj);
-        // var vm = new Vue({
-        //     el: '#app',
-        //     data: obj,
-        //     methods: {
-        //         changeF: function () {
-        //             if (this.foo == 'foo') {
-        //                 this.foo = 'bar';
-        //             } else {
-        //                 this.foo = 'foo';
-        //             }
-        //         }
-        //     },
-        // });
-        // console.log(vm.$data);
-        var data = { a: 1 }
-        var vm = new Vue({
-            el: '#app',
-            data: data
-        })
+      // //console.log('xx');
+      // var obj = {
+      //     foo: 'bar',
+      //     number: 2
+      // }
+      // //console.log(obj);
+      // Object.freeze(obj);
+      // var vm = new Vue({
+      //     el: '#app',
+      //     data: obj,
+      //     methods: {
+      //         changeF: function () {
+      //             if (this.foo == 'foo') {
+      //                 this.foo = 'bar';
+      //             } else {
+      //                 this.foo = 'foo';
+      //             }
+      //         }
+      //     },
+      // });
+      // console.log(vm.$data);
+      var data = {
+        a: 1,
+        message: "hello world"
+      };
+      var vm = new Vue({
+        el: "#app",
+        data: data,
+        watch: {
+          message() {
+            console.log("message changeed...");
+          }
+        }
+      });
 
-        vm.$data === data // => true
-        vm.$el === document.getElementById('app') // => true
+      vm.$data === data; // => true
+      vm.$el === document.getElementById("app"); // => true
 
-        // $watch is an instance method
-        vm.$watch('a', function (newValue, oldValue) {
-            console.log('has change a object');
-            console.log(newValue, oldValue);
-            // This callback will be called when `vm.a` changes
-        });
-        vm.$data.a = 2;
+      // $watch is an instance method
+      vm.$watch("a", function(newValue, oldValue) {
+        console.log("has change a object");
+        console.log(newValue, oldValue);
+        // This callback will be called when `vm.a` changes
+      });
+      //   vm.created("a", function() {
+      //     console.log("had created ooject");
+      //   });
+      vm.$data.a = 2;
     </script>
-</body>
-
+  </body>
 </html>
