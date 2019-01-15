@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+
+<body>
+    <div id="app">
+        <span v-text="ticks"></span>
+    </div>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    ticks: 0
+                }
+            },
+            methods: {
+                tick() {
+                    this.ticks++
+                }
+            },
+            created() {
+                this.$options.interval = setInterval(this.tick, 1000)
+            },
+            beforeDestroy() {
+                clearInterval(this.$options.interval)
+            }
+        });
+    </script>
+</body>
+
+</html>
